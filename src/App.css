@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
+/* body {
+  background-image: radial-gradient(
+    circle farthest-corner at center,
+    #5d666c87 0%,
+    #28363c 100%
+  );
+} */
+
+.loader {
+  position: absolute;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  perspective: 800px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.inner.one {
+  left: 0%;
+  top: 0%;
+  animation: rotate-one 1s linear infinite;
+  border-bottom: 3px solid #f2f3e9;
+}
+
+.inner.two {
+  right: 0%;
+  top: 0%;
+  animation: rotate-two 1s linear infinite;
+  border-right: 3px solid #e2e7e8;
+}
+
+.inner.three {
+  right: 0%;
+  bottom: 0%;
+  animation: rotate-three 1s linear infinite;
+  border-top: 3px solid #dde7e0;
+}
+
+@keyframes rotate-one {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@keyframes rotate-two {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-three {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+input {
+  font-size: 16px;
+  width: 30%;
+  /* margin-bottom: 5px; */
+  padding: 5px;
+}
+
+.flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+select {
+  font-size: 16px;
+  width: 10%;
+  /* margin: 0 0 0 20px; */
+  padding: 5px;
+}
+
+.showGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid black;
+  /* height: 238px; */
+  margin: 0 5px 0 0;
+  border-radius: 5px;
+  background-color: #28363c;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+/* hide scrollbar */
+.element::-webkit-scrollbar {
+  width: 0 !important;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* titles */
+h3 {
+  color: rgb(12, 12, 12);
+  /* margin-top: -2%; */
+  margin-bottom: 2%;
 }
