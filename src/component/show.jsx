@@ -29,7 +29,7 @@ function Show(props) {
           src={original}
           alt=""
           style={{
-            height: "22vw",
+            height: "35vmin",
           }}
         />
       </div>

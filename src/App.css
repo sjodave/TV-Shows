@@ -1,6 +1,5 @@
 body {
-  padding-top: 70px;
-  margin: 0px 20px;
+  margin: 70px 1vw;
 }
 
 .loader {
@@ -69,30 +68,16 @@ body {
   }
 }
 
-input {
-  font-size: 16px;
-  width: 30%;
-  /* margin-bottom: 5px; */
-  padding: 5px;
-}
-
 .flex {
   display: flex;
   justify-content: center;
-}
-
-select {
-  font-size: 16px;
-  width: 10%;
-  /* margin: 0 0 0 20px; */
-  padding: 5px;
 }
 
 .showGrid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1vh;
+  margin: 0.2vw;
   color: white;
 }
 .element {
@@ -112,5 +97,14 @@ select {
   color: rgb(12, 12, 12);
 } */
 img {
-  border-radius: 10px;
+  border-radius: 3%;
+}
+.showListRow {
+  margin-bottom: -2vh;
+  /* margin-left: 1vw; */
+}
+.category-title {
+  color: rgb(25, 126, 227);
+  margin-bottom: -0.1vh;
+  font-size: 3vw;
 }

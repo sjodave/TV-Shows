@@ -4,18 +4,18 @@ import Show from "./show";
 function ShowList(props) {
   const { showList } = props;
   return (
-    <>
-      <h5 className="row text-primary">{props.title}</h5>
+    <div className="showListRow">
+      <h6 className="category-title">{props.title}</h6>
       <div className={props.className ? props.className : "element"}>
         {showList.map((show) => {
           return (
-            <div className="col-sm-2 col-3">
+            <div className="col-sm-2 col-4">
               <Show shows={show}></Show>
             </div>
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 
