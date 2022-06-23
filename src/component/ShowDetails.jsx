@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Home from "../Home";
 
 export default function ShowDetails() {
-  const { currentShow, api } = useSelector((state) => state.show);
+  const { currentShow, api, crewData } = useSelector((state) => state.show);
   const {
     name,
     status,
@@ -70,19 +70,17 @@ export default function ShowDetails() {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row mt-5">
           <div className="col-sm-3">
             <div className="card">
               <ul className="list-group list-group-flush">
                 <li className="list-group-item ">
-                  <h6 className="text-primary">
-                    Latest Episode: {showData.name}
-                  </h6>
+                  <h5 className="text-info">Latest Episode: {showData.name}</h5>
                 </li>
                 <li className="list-group-item">
                   Air Date: {showData.airdate}
                 </li>
-                {console.log(rating)}
+
                 <li className="list-group-item">
                   Air Time: {showData.airtime}
                 </li>
@@ -93,11 +91,8 @@ export default function ShowDetails() {
             </div>
           </div>
           <div className="col-sm-6">
-            <div className="card">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item ">{showData.summary}</li>
-              </ul>
-            </div>
+            <h6 className="text-info">Episode Summary:</h6>
+            <p>{showData.summary}</p>
           </div>
           <div className="col-sm-3">
             <div className="card">
@@ -108,6 +103,36 @@ export default function ShowDetails() {
               </ul>
             </div>
           </div>
+        </div>
+
+        <div className="row mt-5">
+          <h4 className="text-primary">Cast :</h4>
+          {crewData.map((crew, index) => {
+            return (
+              <div className="col-sm-2 p-1">
+                <div className="card">
+                  <div className="card-body">
+                    <>
+                      <img
+                        className="card-img-top"
+                        src={
+                          crew.character.image
+                            ? crew.character.image.medium
+                            : ""
+                        }
+                        alt=""
+                      ></img>
+                      <div className="text-info">
+                        {crew.person.name}{" "}
+                        <span className="text-muted"> as </span>
+                        {crew.character.name}
+                      </div>
+                    </>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </>
     );

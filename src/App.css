@@ -1,10 +1,7 @@
-/* body {
-  background-image: radial-gradient(
-    circle farthest-corner at center,
-    #5d666c87 0%,
-    #28363c 100%
-  );
-} */
+body {
+  padding-top: 70px;
+  margin: 0px 20px;
+}
 
 .loader {
   position: absolute;
@@ -102,9 +99,17 @@ select {
   background-color: #28363c;
   color: white;
 }
+.element {
+  display: flex;
+  overflow-x: auto;
+}
 /* hide scrollbar */
 .element::-webkit-scrollbar {
   width: 0 !important;
+}
+.element1 {
+  display: flex;
+  flex-wrap: wrap;
 }
 /* titles */
 h3 {

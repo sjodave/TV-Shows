@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  inputValue: "a",
   loading: false,
   showList: [],
   sortedShowList: [],
@@ -11,14 +10,13 @@ const initialState = {
   Fantasy: [],
   currentShow: "",
   api: "",
+  category: "",
+  crewData: [],
 };
 export const reducerSlice = createSlice({
   name: "reducer",
   initialState,
   reducers: {
-    searchShows: (state, action) => {
-      state.inputValue = action.payload;
-    },
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
@@ -47,13 +45,10 @@ export const reducerSlice = createSlice({
     setCurrentShow: (state, action) => {
       //states ate immutable in redux
       state.currentShow = action.payload;
-      state.api = action.payload._links.previousepisode.href; //create shallow copy?
-
-      // return {
-      //   ...state,
-      //   currentShow: action.payload,
-      //   api: action.payload._links.previousepisode.href,
-      // }; //create deep copy?
+      state.api = action.payload._links.previousepisode.href;
+    },
+    setCrewData: (state, action) => {
+      state.crewData = action.payload;
     },
   },
 });
@@ -64,5 +59,6 @@ export const {
   setSortList,
   sortListItem,
   setCurrentShow,
+  setCrewData,
 } = reducerSlice.actions;
 export default reducerSlice.reducer;

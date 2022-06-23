@@ -1,20 +1,12 @@
 import React from "react";
-
+import "../App.css";
 import Show from "./show";
 function ShowList(props) {
   const { showList } = props;
   return (
     <>
-      <h3 className="text-primary">{props.title}</h3>
-      <div
-        className="element"
-        style={{
-          display: "flex",
-          overflowX: "auto",
-          // height: "400px",
-          // msOverflowStyle: "none",
-        }}
-      >
+      <h5 className="text-primary">{props.title}</h5>
+      <div className={props.className ? props.className : "element"}>
         {showList.map((show) => {
           return <Show shows={show}></Show>;
         })}
