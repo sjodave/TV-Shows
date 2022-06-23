@@ -111,3 +111,6 @@ select {
 /* h3 {
   color: rgb(12, 12, 12);
 } */
+img {
+  border-radius: 10px;
+}

@@ -20,7 +20,7 @@ function Home() {
   } = useSelector((state) => state.show);
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Tv Shows</h1>
+      <h1 style={{ textAlign: "center" }}>📺 Tv Shows 🎥</h1>
       <Loading loading={loading}></Loading>
       <ShowList title="All Shows" showList={sortedShowList}></ShowList>
       <ShowList title="Action" showList={Action}></ShowList>

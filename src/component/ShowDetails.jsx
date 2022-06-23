@@ -32,19 +32,26 @@ export default function ShowDetails() {
             <div className="card">
               <div className="card-body">
                 <img className="card-img-top" src={image.medium} alt=""></img>
-                <button href="#" className="btn btn-primary mt-2">
+                <button
+                  href="#"
+                  className="btn btn-primary mt-2"
+                  onClick={() => {
+                    const url = `https://www.youtube.com/results?search_query=${name}+trailer`;
+                    window.open(url);
+                  }}
+                >
                   Watch Trailer
                 </button>
               </div>
             </div>
           </div>
-          <div className="col-sm-6 ">
+          <div className="col-sm-6">
             <div className="card-body">
               <h6 className="card-title text-primary">Summary</h6>
               <p className="card-text">{currentShow.summary}</p>
             </div>
           </div>
-          <div className="col-sm-3 ">
+          <div className="col-sm-3">
             <div className="card">
               <ul className="list-group list-group-flush">
                 <li className="list-group-item text-primary">
@@ -109,7 +116,14 @@ export default function ShowDetails() {
           <h4 className="text-primary">Cast :</h4>
           {crewData.map((crew, index) => {
             return (
-              <div className="col-sm-2 p-1">
+              <div
+                className="col-sm-2 p-1 col-4"
+                onClick={() => {
+                  //search person on google
+                  const url = `https://www.google.com/search?q=${crew.person.name}`;
+                  window.open(url);
+                }}
+              >
                 <div className="card">
                   <div className="card-body">
                     <>

@@ -29,7 +29,6 @@ function Show(props) {
           src={original}
           alt=""
           style={{
-            borderRadius: "10px",
             height: "22vw",
           }}
         />
