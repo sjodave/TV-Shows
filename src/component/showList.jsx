@@ -5,10 +5,14 @@ function ShowList(props) {
   const { showList } = props;
   return (
     <>
-      <h5 className="text-primary">{props.title}</h5>
+      <h5 className="row text-primary">{props.title}</h5>
       <div className={props.className ? props.className : "element"}>
         {showList.map((show) => {
-          return <Show shows={show}></Show>;
+          return (
+            <div className="col-sm-2 col-3">
+              <Show shows={show}></Show>
+            </div>
+          );
         })}
       </div>
     </>

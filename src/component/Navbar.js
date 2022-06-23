@@ -23,11 +23,10 @@ export default function NavigationBar() {
   return (
     <Navbar bg="primary" variant="dark" fixed="top">
       <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+        <Navbar.Brand href="/">Home</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/Action">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Nav.Link href="#">Today</Nav.Link>
+          {/* <Nav.Link href="#">Upcomming</Nav.Link> */}
           <NavDropdown title="Category" id="basic-nav-dropdown">
             <NavDropdown.Item href="/Action">Action</NavDropdown.Item>
             <NavDropdown.Item href="/Crime">Crime</NavDropdown.Item>
@@ -47,7 +46,7 @@ export default function NavigationBar() {
             className="me-2"
             aria-label="search"
           />
-          <Button variant="outline-success">Search</Button>
+          {/* <Button variant="outline-danger">Search</Button> */}
         </Form>
       </Container>
     </Navbar>

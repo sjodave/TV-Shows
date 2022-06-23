@@ -25,12 +25,12 @@ function Show(props) {
         }}
       >
         <img
+          className="w-100"
           src={original}
           alt=""
           style={{
-            height: "250px",
-            width: "250px",
-            borderRadius: "5px",
+            borderRadius: "10px",
+            height: "22vw",
           }}
         />
       </div>
