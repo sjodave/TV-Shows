@@ -92,19 +92,15 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-/* titles */
-/* h3 {
-  color: rgb(12, 12, 12);
-} */
+
 img {
   border-radius: 3%;
 }
 .showListRow {
-  margin-bottom: -2vh;
+  margin-bottom: -0.5vh;
   /* margin-left: 1vw; */
 }
 .category-title {
   color: rgb(25, 126, 227);
-  margin-bottom: -0.1vh;
-  font-size: 3vw;
+  margin-bottom: -0.1vw;
 }
