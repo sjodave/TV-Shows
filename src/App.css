@@ -42,6 +42,7 @@ img {
 }
 .showListRow {
   margin-bottom: -0.5vh;
+  /* margin-left: 1vw; */
 }
 .category-title {
   color: rgb(25, 126, 227);
