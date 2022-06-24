@@ -1,13 +1,10 @@
 import React from "react";
+import { ThreeDots } from "react-loader-spinner";
 export default function Loading(props) {
   return (
-    <div style={{ display: "flex" }}>
+    <div className="loader" style={{ display: "flex" }}>
       {props.loading ? (
-        <div class="loader">
-          <div class="inner one"></div>
-          <div class="inner two"></div>
-          <div class="inner three"></div>
-        </div>
+        <ThreeDots color="#00BFFF" height={80} width={80} />
       ) : null}
     </div>
   );

@@ -1,11 +1,14 @@
 import React from "react";
 import "../App.css";
 import Show from "./show";
+import { useSelector } from "react-redux";
+
 function ShowList(props) {
   const { showList } = props;
+  const { loading } = useSelector((state) => state.show);
   return (
     <div className="showListRow">
-      <h6 className="category-title">{props.title}</h6>
+      <h6 className="category-title">{loading ? null : props.title}</h6>
       <div className={props.className ? props.className : "element"}>
         {showList.map((show) => {
           return (
