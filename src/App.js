@@ -12,8 +12,8 @@ import { setLoading, setSortList } from "./redux/reducer";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setLoading(true));
-    fetch("https://api.tvmaze.com/shows")
+    dispatch(setLoading(true)); //
+    fetch(`https://api.tvmaze.com/shows`)
       .then((response) => {
         return response.json();
       })
@@ -22,6 +22,7 @@ function App() {
         dispatch(setLoading(false));
       });
   }, []);
+
   const {
     Action,
     Crime,

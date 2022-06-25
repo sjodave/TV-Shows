@@ -14,6 +14,7 @@ export default function ShowDetails() {
     network,
     genres,
     rating,
+    officialSite,
   } = currentShow;
   const [showData, setShowData] = useState("");
   console.log("showDetails");
@@ -62,7 +63,14 @@ export default function ShowDetails() {
                   Genres: {genres[0]}|{genres[1]}|{genres[2]}
                 </li>
                 <li className="list-group-item">
-                  Network: {network ? network.name : ""}
+                  Network:{" "}
+                  {network ? (
+                    network.name
+                  ) : (
+                    <a href={officialSite} target="_blank">
+                      {officialSite}
+                    </a>
+                  )}
                 </li>
                 <li className="list-group-item">
                   Schedule: {schedule.days} {schedule.time}
@@ -85,7 +93,9 @@ export default function ShowDetails() {
             <div className="card">
               <ul className="list-group list-group-flush">
                 <li className="list-group-item ">
-                  <h5 className="text-info">Latest Episode: {showData.name}</h5>
+                  <h5 className="text-info">
+                    Previous Episode: {showData.name}
+                  </h5>
                 </li>
                 <li className="list-group-item">
                   Air Date: {showData.airdate}

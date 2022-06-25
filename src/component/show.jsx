@@ -26,7 +26,7 @@ function Show(props) {
         }}
       >
         <img
-          className="w-100"
+          className="w-100 zoom"
           src={props.shows.image ? props.shows.image.original : "notfound.png"}
           alt=""
           style={{

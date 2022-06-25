@@ -24,6 +24,7 @@ body {
   margin: 0.2vw;
   color: white;
 }
+
 .element {
   display: flex;
   overflow-x: auto;
@@ -48,4 +49,11 @@ img {
   color: rgb(25, 126, 227);
   margin-bottom: -0.1vw;
   font-size: 3vw;
+}
+.zoom {
+  transition: transform 0.3s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.08);
 }
