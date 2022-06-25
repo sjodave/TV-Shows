@@ -22,9 +22,15 @@ function App() {
         dispatch(setLoading(false));
       });
   }, []);
-  const { Action, Crime, Drama, Thriller, Fantasy, SciFi } = useSelector(
-    (state) => state.show
-  );
+  const {
+    Action,
+    Crime,
+    Drama,
+    Thriller,
+    Fantasy,
+    SciFi,
+    searchedShow,
+  } = useSelector((state) => state.show);
   return (
     <BrowserRouter>
       <NavigationBar></NavigationBar>
@@ -88,6 +94,16 @@ function App() {
               className="element1"
               title="SciFi"
               showList={SciFi}
+            ></ShowList>
+          }
+        />
+        <Route
+          path="/Search"
+          element={
+            <ShowList
+              className="element1"
+              title="Search Results"
+              showList={searchedShow}
             ></ShowList>
           }
         />

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 function ShowList(props) {
   const { showList } = props;
+  console.log("showList");
   const { loading } = useSelector((state) => state.show);
   return (
     <div className="showListRow">

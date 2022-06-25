@@ -12,6 +12,7 @@ const initialState = {
   api: "",
   category: "",
   crewData: [],
+  searchedShow: [],
 };
 export const reducerSlice = createSlice({
   name: "reducer",
@@ -50,6 +51,9 @@ export const reducerSlice = createSlice({
     setCrewData: (state, action) => {
       state.crewData = action.payload;
     },
+    setSearchedShow: (state, action) => {
+      state.searchedShow = action.payload;
+    },
   },
 });
 
@@ -60,5 +64,6 @@ export const {
   sortListItem,
   setCurrentShow,
   setCrewData,
+  setSearchedShow,
 } = reducerSlice.actions;
 export default reducerSlice.reducer;

@@ -1,5 +1,5 @@
-import React from "react";
-import { sortListItem } from "../redux/reducer";
+import React, { useRef } from "react";
+import { setShowSearchApi, setSearchedShow } from "../redux/reducer";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Navbar,
@@ -10,23 +10,19 @@ import {
   Button,
   FormControl,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function NavigationBar() {
   const dispatch = useDispatch();
-  const { showList } = useSelector((state) => state.show);
-  const Search = (shows) => {
-    const searchedShow = showList.filter((show) => {
-      return show.name.toLowerCase().includes(shows.toLowerCase());
-    });
-    dispatch(sortListItem(searchedShow));
-  };
+  const input = useRef();
+  const navigate = useNavigate();
   return (
     <Navbar bg="primary" variant="dark" fixed="top">
       <Container>
         <Navbar.Brand href="/">Home</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="#">Today</Nav.Link>
-          {/* <Nav.Link href="#">Upcomming</Nav.Link> */}
+
           <NavDropdown title="Category" id="basic-nav-dropdown">
             <NavDropdown.Item href="/Action">Action</NavDropdown.Item>
             <NavDropdown.Item href="/Crime">Crime</NavDropdown.Item>
@@ -38,15 +34,36 @@ export default function NavigationBar() {
         </Nav>
         <Form className="d-flex">
           <FormControl
-            onChange={(e) => {
-              Search(e.target.value);
-            }}
+            ref={input}
             type="search"
             placeholder="search"
             className="me-2"
             aria-label="search"
           />
-          {/* <Button variant="outline-danger">Search</Button> */}
+          <Button
+            variant="outline-warning"
+            onClick={() => {
+              if (input.current.value.length > 2) {
+                fetch(
+                  `https://api.tvmaze.com/search/shows?q=${input.current.value}`
+                )
+                  .then((resp) => resp.json())
+                  .then((data) =>
+                    dispatch(
+                      setSearchedShow(
+                        data.map((item) => {
+                          // obtain same array of object as in app.js component
+                          return item.show;
+                        })
+                      )
+                    )
+                  );
+                navigate("/Search");
+              }
+            }}
+          >
+            Search
+          </Button>
         </Form>
       </Container>
     </Navbar>

@@ -16,6 +16,7 @@ export default function ShowDetails() {
     rating,
   } = currentShow;
   const [showData, setShowData] = useState("");
+  console.log("showDetails");
   useEffect(() => {
     if (api) {
       fetch(api)
@@ -60,7 +61,9 @@ export default function ShowDetails() {
                 <li className="list-group-item">
                   Genres: {genres[0]}|{genres[1]}|{genres[2]}
                 </li>
-                <li className="list-group-item">Network: {network.name}</li>
+                <li className="list-group-item">
+                  Network: {network ? network.name : ""}
+                </li>
                 <li className="list-group-item">
                   Schedule: {schedule.days} {schedule.time}
                 </li>
@@ -68,7 +71,7 @@ export default function ShowDetails() {
                 <li className="list-group-item">Runtime: {runtime}</li>
                 <li className="list-group-item">Language: {language}</li>
                 <li className="list-group-item">
-                  County: {network.country.name}
+                  County: {network ? network.country.name : ""}
                 </li>
                 <li className="list-group-item">
                   Rating : {rating.average}/10
@@ -105,7 +108,11 @@ export default function ShowDetails() {
             <div className="card">
               <ul className="list-group list-group-flush">
                 <li className="list-group-item ">
-                  <img src={showData ? showData.image.medium : ""}></img>
+                  <img
+                    src={
+                      showData.image ? showData.image.medium : "notfound.png"
+                    }
+                  ></img>
                 </li>
               </ul>
             </div>
@@ -132,7 +139,7 @@ export default function ShowDetails() {
                         src={
                           crew.character.image
                             ? crew.character.image.medium
-                            : ""
+                            : "notfound.png"
                         }
                         alt=""
                       ></img>

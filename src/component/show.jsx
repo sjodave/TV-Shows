@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { setCurrentShow, setCrewData } from "../redux/reducer";
 import { useDispatch } from "react-redux";
 function Show(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { original } = props.shows.image;
+  console.log("show");
   return (
     <>
       <div
@@ -19,14 +19,15 @@ function Show(props) {
             })
             .then((crewData) => {
               dispatch(setCrewData(crewData));
-            });
+            })
+            .catch((err) => console.log(err));
           dispatch(setCurrentShow(props.shows));
           navigate("/showDetails");
         }}
       >
         <img
           className="w-100"
-          src={original}
+          src={props.shows.image ? props.shows.image.original : "notfound.png"}
           alt=""
           style={{
             height: "35vmin",
