@@ -11,6 +11,7 @@ import { setLoading, setSortList } from "./redux/reducer";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(setLoading(true)); //
     fetch(`https://api.tvmaze.com/shows`)
@@ -31,6 +32,7 @@ function App() {
     Fantasy,
     SciFi,
     searchedShow,
+    showList,
   } = useSelector((state) => state.show);
   return (
     <BrowserRouter>
@@ -38,6 +40,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/showDetails" element={<ShowDetails />} />
+        <Route
+          path="/All_Shows"
+          element={
+            <ShowList
+              className="element1"
+              title="All_Shows"
+              showList={showList}
+            ></ShowList>
+          }
+        />
         <Route
           path="/Action"
           element={

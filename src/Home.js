@@ -5,15 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Loading from "./Loading";
 
 function Home() {
-  const {
-    loading,
-    sortedShowList,
-    Action,
-    Crime,
-    Fantasy,
-    SciFi,
-    Thriller,
-  } = useSelector((state) => state.show);
+  const { loading, showList, Action, Crime, Fantasy, SciFi, Thriller } =
+    useSelector((state) => state.show);
   console.log("home");
   return (
     <>
@@ -21,14 +14,15 @@ function Home() {
       <Loading loading={loading}></Loading>
 
       <ShowList
-        id="20vh"
-        title="All Shows"
-        showList={sortedShowList}
+        className="allShows"
+        // id="20vh"
+        title="All_Shows"
+        showList={showList}
       ></ShowList>
       <ShowList title="Action" showList={Action}></ShowList>
       <ShowList title="Crime" showList={Crime}></ShowList>
       <ShowList title="Thriller" showList={Thriller}></ShowList>
-      <ShowList title="Sci-Fi" showList={SciFi}></ShowList>
+      <ShowList title="SciFi" showList={SciFi}></ShowList>
       <ShowList title="Fantasy" showList={Fantasy}></ShowList>
     </>
   );

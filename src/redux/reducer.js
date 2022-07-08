@@ -7,6 +7,7 @@ const initialState = {
   Action: [],
   Thriller: [],
   SciFi: [],
+  Drama: [],
   Fantasy: [],
   currentShow: "",
   api: "",
@@ -38,6 +39,9 @@ export const reducerSlice = createSlice({
       });
       state.Fantasy = action.payload.filter((show) => {
         return show.genres.includes("Fantasy");
+      });
+      state.Drama = action.payload.filter((show) => {
+        return show.genres.includes("Drama");
       });
     },
     sortListItem: (state, action) => {

@@ -25,12 +25,23 @@ body {
   color: white;
 }
 
+.allShows {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 75vh;
+  overflow-x: auto;
+}
 .element {
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 /* hide scrollbar */
 .element::-webkit-scrollbar {
+  width: 0 !important;
+}
+.allShows::-webkit-scrollbar {
   width: 0 !important;
 }
 .element1 {

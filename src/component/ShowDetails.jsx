@@ -63,14 +63,10 @@ export default function ShowDetails() {
                   Genres: {genres[0]}|{genres[1]}|{genres[2]}
                 </li>
                 <li className="list-group-item">
-                  Network:{" "}
-                  {network ? (
-                    network.name
-                  ) : (
-                    <a href={officialSite} target="_blank">
-                      {officialSite}
-                    </a>
-                  )}
+                  Official Site:{" "}
+                  <a href={officialSite} target="_blank">
+                    {officialSite}
+                  </a>
                 </li>
                 <li className="list-group-item">
                   Schedule: {schedule.days} {schedule.time}

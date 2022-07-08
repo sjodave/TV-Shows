@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import { setShowSearchApi, setSearchedShow } from "../redux/reducer";
-import { useSelector, useDispatch } from "react-redux";
+import { setSearchedShow } from "../redux/reducer";
+import { useDispatch } from "react-redux";
 import {
   Navbar,
   Container,
@@ -21,8 +21,6 @@ export default function NavigationBar() {
       <Container>
         <Navbar.Brand href="/">Home</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#">Today</Nav.Link>
-
           <NavDropdown title="Category" id="basic-nav-dropdown">
             <NavDropdown.Item href="/Action">Action</NavDropdown.Item>
             <NavDropdown.Item href="/Crime">Crime</NavDropdown.Item>

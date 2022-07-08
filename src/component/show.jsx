@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 function Show(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log("show");
+
   return (
     <>
       <div
@@ -13,6 +13,7 @@ function Show(props) {
         value={props}
         onClick={(e) => {
           // fetch crew details
+          console.log(props.shows);
           fetch(`https://api.tvmaze.com/shows/${props.shows.id}/cast`)
             .then((resp) => {
               return resp.json();
@@ -30,7 +31,8 @@ function Show(props) {
           src={props.shows.image ? props.shows.image.original : "notfound.png"}
           alt=""
           style={{
-            height: "35vmin",
+            height: "35vh",
+            cursor: "pointer",
           }}
         />
       </div>
