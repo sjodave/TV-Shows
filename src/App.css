@@ -1,3 +1,4 @@
+@import "react-slideshow-image/dist/styles.css";
 body {
   margin: 70px 1vw;
 }
@@ -50,7 +51,7 @@ body {
 }
 
 img {
-  border-radius: 3%;
+  border-radius: 8px;
 }
 .showListRow {
   margin-bottom: -0.5vh;
@@ -67,4 +68,94 @@ img {
 
 .zoom:hover {
   transform: scale(1.08);
+}
+
+.featured-show {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 200px;
+}
+#slide-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: auto;
+}
+#img-not-found {
+  height: 20vh;
+  width: 10vw;
+}
+
+/* portal */
+.modal {
+  border-style: solid;
+  border-radius: 5px;
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  /* position: relative; */
+  transition: all 5s ease-in-out;
+  background-color: aquamarine;
+}
+
+.modal h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.modal .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.modal .close:hover {
+  color: #828684;
+}
+.modal .content {
+  max-height: 30%;
+  overflow: auto;
+}
+._modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em;
+  line-height: 1;
+  background: #f6f6f7;
+  border: 0;
+  box-shadow: 0;
+  cursor: pointer;
+}
+._modal-close-icon {
+  width: 25px;
+  height: 25px;
+  fill: transparent;
+  stroke: black;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+._hide-visual {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+.container_portal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: rgb(221, 213, 204);
 }

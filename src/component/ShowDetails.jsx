@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 import Home from "../Home";
 
 export default function ShowDetails() {
+  const parse = require("html-react-parser");
+  const [open, setOpen] = useState(false);
+  const [videoId, setVideoId] = useState("");
   const { currentShow, api, crewData } = useSelector((state) => state.show);
   const {
     name,
@@ -23,6 +26,13 @@ export default function ShowDetails() {
       fetch(api)
         .then((resp) => resp.json())
         .then((data) => setShowData(data));
+      fetch(
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${currentShow.name}seriesOfficialTrailer&key=AIzaSyDkMxIdZDIWOXW03zO94sy140P298BicKk`
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          setVideoId(data.items[0].id.videoId);
+        });
     }
   }, [api]);
   if (currentShow) {
@@ -30,6 +40,7 @@ export default function ShowDetails() {
       <>
         <div className="row">
           <h2 className="text-primary">{name}</h2>
+
           <div className="col-sm-3">
             <div className="card">
               <div className="card-body">
@@ -38,19 +49,21 @@ export default function ShowDetails() {
                   href="#"
                   className="btn btn-primary mt-2"
                   onClick={() => {
-                    const url = `https://www.youtube.com/results?search_query=${name}+trailer`;
-                    window.open(url);
+                    setOpen(true);
                   }}
                 >
                   Watch Trailer
                 </button>
+                {open ? showTrailer(setOpen, videoId) : ""}
               </div>
             </div>
           </div>
           <div className="col-sm-6">
             <div className="card-body">
               <h6 className="card-title text-primary">Summary</h6>
-              <p className="card-text">{currentShow.summary}</p>
+              <div className="card-text">
+                {currentShow.summary ? parse(currentShow.summary) : ""}
+              </div>
             </div>
           </div>
           <div className="col-sm-3">
@@ -63,10 +76,7 @@ export default function ShowDetails() {
                   Genres: {genres[0]}|{genres[1]}|{genres[2]}
                 </li>
                 <li className="list-group-item">
-                  Official Site:{" "}
-                  <a href={officialSite} target="_blank">
-                    {officialSite}
-                  </a>
+                  Official Site: <a href={officialSite}>{officialSite}</a>
                 </li>
                 <li className="list-group-item">
                   Schedule: {schedule.days} {schedule.time}
@@ -108,13 +118,15 @@ export default function ShowDetails() {
           </div>
           <div className="col-sm-6">
             <h6 className="text-info">Episode Summary:</h6>
-            <p>{showData.summary}</p>
+            <>{showData.summary ? parse(showData.summary) : ""}</>
           </div>
           <div className="col-sm-3">
             <div className="card">
               <ul className="list-group list-group-flush">
                 <li className="list-group-item ">
                   <img
+                    alt="img"
+                    id={!showData.image ? "img-not-found" : ""}
                     src={
                       showData.image ? showData.image.medium : "notfound.png"
                     }
@@ -130,6 +142,7 @@ export default function ShowDetails() {
           {crewData.map((crew, index) => {
             return (
               <div
+                key={index}
                 className="col-sm-2 p-1 col-4"
                 onClick={() => {
                   //search person on google
@@ -165,4 +178,34 @@ export default function ShowDetails() {
     );
   }
   return <Home></Home>;
+}
+
+function showTrailer(setOpen, videoId) {
+  const Style = {
+    position: "fixed",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: "2",
+  };
+  return (
+    <div style={Style}>
+      <iframe
+        title="trailer"
+        type="text/html"
+        width="640"
+        height="360"
+        src={`https://www.youtube.com/embed/${videoId}`}
+      ></iframe>
+
+      <button
+        className="btn btn-primary mt-2"
+        onClick={() => {
+          setOpen(false);
+        }}
+      >
+        Close
+      </button>
+    </div>
+  );
 }
