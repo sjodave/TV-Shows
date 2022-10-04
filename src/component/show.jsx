@@ -10,7 +10,6 @@ function Show(props) {
     <>
       <div
         className="showGrid"
-        value={props}
         onClick={(e) => {
           // fetch crew details
           console.log(props.shows);
