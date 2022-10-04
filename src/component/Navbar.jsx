@@ -19,15 +19,19 @@ export default function NavigationBar() {
   return (
     <Navbar bg="primary" variant="dark" fixed="top">
       <Container>
-        <Navbar.Brand href="/">Home</Navbar.Brand>
+        <Navbar.Brand href="/TV-Shows">Home</Navbar.Brand>
         <Nav className="me-auto">
           <NavDropdown title="Category" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/Action">Action</NavDropdown.Item>
-            <NavDropdown.Item href="/Crime">Crime</NavDropdown.Item>
-            <NavDropdown.Item href="/Fantasy">Fantasy</NavDropdown.Item>
-            <NavDropdown.Item href="/Drama">Drama</NavDropdown.Item>
-            <NavDropdown.Item href="/Thriller">Thriller</NavDropdown.Item>
-            <NavDropdown.Item href="/SciFi">SciFi</NavDropdown.Item>
+            <NavDropdown.Item href="/TV-Shows/Action">Action</NavDropdown.Item>
+            <NavDropdown.Item href="/TV-Shows/Crime">Crime</NavDropdown.Item>
+            <NavDropdown.Item href="/TV-Shows/Fantasy">
+              Fantasy
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/TV-Shows/Drama">Drama</NavDropdown.Item>
+            <NavDropdown.Item href="/TV-Shows/Thriller">
+              Thriller
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/TV-Shows/SciFi">SciFi</NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Form className="d-flex">
@@ -56,7 +60,7 @@ export default function NavigationBar() {
                       )
                     )
                   );
-                navigate("/Search");
+                navigate("/TV-Shows/Search");
               }
             }}
           >

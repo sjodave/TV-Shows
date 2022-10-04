@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Home from "./Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -13,7 +13,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLoading(true)); //
-    fetch(`https://api.tvmaze.com/shows?page=9`)
+    fetch(`https://api.tvmaze.com/shows?page=1`)
       .then((response) => {
         return response.json();
       })
@@ -38,10 +38,10 @@ function App() {
       <BrowserRouter>
         <NavigationBar></NavigationBar>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/showDetails" element={<ShowDetails />} />
+          <Route path="/TV-Shows" element={<Home />} />
+          <Route path="/TV-Shows/showDetails" element={<ShowDetails />} />
           <Route
-            path="/All_Shows"
+            path="/TV-Shows/All_Shows"
             element={
               <ShowList
                 className="element1"
@@ -51,7 +51,7 @@ function App() {
             }
           />
           <Route
-            path="/Action"
+            path="/TV-Shows/Action"
             element={
               <ShowList
                 className="element1"
@@ -61,7 +61,7 @@ function App() {
             }
           />
           <Route
-            path="/Crime"
+            path="/TV-Shows/Crime"
             element={
               <ShowList
                 className="element1" //for changing css
@@ -71,7 +71,7 @@ function App() {
             }
           />
           <Route
-            path="/Fantasy"
+            path="/TV-Shows/Fantasy"
             element={
               <ShowList
                 className="element1"
@@ -81,7 +81,7 @@ function App() {
             }
           />
           <Route
-            path="/Drama"
+            path="/TV-Shows/Drama"
             element={
               <ShowList
                 className="element1"
@@ -91,7 +91,7 @@ function App() {
             }
           />
           <Route
-            path="/Thriller"
+            path="/TV-Shows/Thriller"
             element={
               <ShowList
                 className="element1"
@@ -101,7 +101,7 @@ function App() {
             }
           />
           <Route
-            path="/SciFi"
+            path="/TV-Shows/SciFi"
             element={
               <ShowList
                 className="element1"
@@ -111,7 +111,7 @@ function App() {
             }
           />
           <Route
-            path="/Search"
+            path="/TV-Shows/Search"
             element={
               <ShowList
                 className="element1"
