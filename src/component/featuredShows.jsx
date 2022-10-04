@@ -46,7 +46,7 @@ export default function FeaturedShows() {
                         })
                         .catch((err) => console.log(err));
                       dispatch(setCurrentShow(e));
-                      navigate("/TV-Shows/showDetails");
+                      navigate("/showDetails");
                     }}
                   />
                 </div>

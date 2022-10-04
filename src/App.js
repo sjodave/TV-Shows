@@ -38,10 +38,10 @@ function App() {
       <BrowserRouter>
         <NavigationBar></NavigationBar>
         <Routes>
-          <Route path="/TV-Shows" element={<Home />} />
-          <Route path="/TV-Shows/showDetails" element={<ShowDetails />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/showDetails" element={<ShowDetails />} />
           <Route
-            path="/TV-Shows/All_Shows"
+            path="/All_Shows"
             element={
               <ShowList
                 className="element1"
@@ -51,7 +51,7 @@ function App() {
             }
           />
           <Route
-            path="/TV-Shows/Action"
+            path="/Action"
             element={
               <ShowList
                 className="element1"
@@ -61,7 +61,7 @@ function App() {
             }
           />
           <Route
-            path="/TV-Shows/Crime"
+            path="/Crime"
             element={
               <ShowList
                 className="element1" //for changing css
@@ -71,7 +71,7 @@ function App() {
             }
           />
           <Route
-            path="/TV-Shows/Fantasy"
+            path="/Fantasy"
             element={
               <ShowList
                 className="element1"
@@ -81,7 +81,7 @@ function App() {
             }
           />
           <Route
-            path="/TV-Shows/Drama"
+            path="/Drama"
             element={
               <ShowList
                 className="element1"
@@ -91,7 +91,7 @@ function App() {
             }
           />
           <Route
-            path="/TV-Shows/Thriller"
+            path="/Thriller"
             element={
               <ShowList
                 className="element1"
@@ -101,7 +101,7 @@ function App() {
             }
           />
           <Route
-            path="/TV-Shows/SciFi"
+            path="/SciFi"
             element={
               <ShowList
                 className="element1"
@@ -111,7 +111,7 @@ function App() {
             }
           />
           <Route
-            path="/TV-Shows/Search"
+            path="/Search"
             element={
               <ShowList
                 className="element1"
