@@ -26,15 +26,17 @@ export default function ShowDetails() {
       fetch(api)
         .then((resp) => resp.json())
         .then((data) => setShowData(data));
-      fetch(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${currentShow.name}seriesOfficialTrailer&key=AIzaSyDkMxIdZDIWOXW03zO94sy140P298BicKk`
-      )
-        .then((resp) => resp.json())
-        .then((data) => {
-          setVideoId(data.items[0].id.videoId);
-        });
     }
   }, [api]);
+  useEffect(() => {
+    fetch(
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${currentShow.name}seriesOfficialTrailer&key=AIzaSyDkMxIdZDIWOXW03zO94sy140P298BicKk`
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        setVideoId(data.items[0].id.videoId);
+      });
+  }, [currentShow.name]);
   if (currentShow) {
     return (
       <>
