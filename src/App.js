@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Home from "./Home";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ShowDetails from "./component/ShowDetails";
 import NavigationBar from "./component/Navbar";
 import ShowList from "./component/showList";
@@ -35,7 +35,7 @@ function App() {
   } = useSelector((state) => state.show);
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <NavigationBar></NavigationBar>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -121,7 +121,7 @@ function App() {
             }
           />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 }
