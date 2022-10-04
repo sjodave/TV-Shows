@@ -23,7 +23,7 @@ function Show(props) {
             })
             .catch((err) => console.log(err));
           dispatch(setCurrentShow(props.shows));
-          navigate("/TV-Shows/showDetails");
+          navigate("/showDetails");
         }}
       >
         <img
