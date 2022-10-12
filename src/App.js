@@ -6,7 +6,7 @@ import ShowDetails from "./component/ShowDetails";
 import NavigationBar from "./component/Navbar";
 import ShowList from "./component/showList";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setLoading, setSortList } from "./redux/reducer";
 
 function App() {
