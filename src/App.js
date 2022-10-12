@@ -10,10 +10,11 @@ import { useEffect } from "react";
 import { setLoading, setSortList } from "./redux/reducer";
 
 function App() {
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setLoading(true)); //
-    fetch(`https://api.tvmaze.com/shows?page=9`)
+    dispatch(setLoading(true));
+    fetch(`https://api.tvmaze.com/shows?page=${page}`)
       .then((response) => {
         return response.json();
       })
@@ -21,7 +22,8 @@ function App() {
         dispatch(setSortList(data));
         dispatch(setLoading(false));
       });
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   const {
     Action,
@@ -38,13 +40,13 @@ function App() {
       <BrowserRouter>
         <NavigationBar></NavigationBar>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home page={page} setPage={setPage} />} />
           <Route path="/showDetails" element={<ShowDetails />} />
           <Route
             path="/All_Shows"
             element={
               <ShowList
-                className="element1"
+                display="element1"
                 title="All_Shows"
                 showList={showList}
               ></ShowList>
@@ -54,7 +56,7 @@ function App() {
             path="/Action"
             element={
               <ShowList
-                className="element1"
+                display="element1"
                 title="Action"
                 showList={Action}
               ></ShowList>
@@ -64,7 +66,7 @@ function App() {
             path="/Crime"
             element={
               <ShowList
-                className="element1" //for changing css
+                display="element1" //for changing css
                 title="Crime"
                 showList={Crime}
               ></ShowList>
@@ -74,7 +76,7 @@ function App() {
             path="/Fantasy"
             element={
               <ShowList
-                className="element1"
+                display="element1"
                 title="Fantasy"
                 showList={Fantasy}
               ></ShowList>
@@ -84,7 +86,7 @@ function App() {
             path="/Drama"
             element={
               <ShowList
-                className="element1"
+                display="element1"
                 title="Drama"
                 showList={Drama}
               ></ShowList>
@@ -94,7 +96,7 @@ function App() {
             path="/Thriller"
             element={
               <ShowList
-                className="element1"
+                display="element1"
                 title="Thriller"
                 showList={Thriller}
               ></ShowList>
@@ -104,7 +106,7 @@ function App() {
             path="/SciFi"
             element={
               <ShowList
-                className="element1"
+                display="element1"
                 title="SciFi"
                 showList={SciFi}
               ></ShowList>
@@ -114,7 +116,7 @@ function App() {
             path="/Search"
             element={
               <ShowList
-                className="element1"
+                display="element1"
                 title="Search Results"
                 showList={searchedShow}
               ></ShowList>

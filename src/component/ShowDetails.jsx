@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Home from "../Home";
+import YoutubePortal from "./YoutubePortal";
 
 export default function ShowDetails() {
   const parse = require("html-react-parser");
-  const [open, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
   const [videoId, setVideoId] = useState("");
   const { currentShow, api, crewData } = useSelector((state) => state.show);
   const {
@@ -26,15 +27,17 @@ export default function ShowDetails() {
       fetch(api)
         .then((resp) => resp.json())
         .then((data) => setShowData(data));
-      fetch(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${currentShow.name}seriesOfficialTrailer&key=AIzaSyDkMxIdZDIWOXW03zO94sy140P298BicKk`
-      )
-        .then((resp) => resp.json())
-        .then((data) => {
-          setVideoId(data.items[0].id.videoId);
-        });
     }
   }, [api]);
+  useEffect(() => {
+    fetch(
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${currentShow.name}SeriesOfficialTrailer&key=AIzaSyDkMxIdZDIWOXW03zO94sy140P298BicKk`
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        setVideoId(data?.items[0]?.id?.videoId);
+      });
+  }, [currentShow.name]);
   if (currentShow) {
     return (
       <>
@@ -44,7 +47,7 @@ export default function ShowDetails() {
           <div className="col-sm-3">
             <div className="card">
               <div className="card-body">
-                <img className="card-img-top" src={image.medium} alt=""></img>
+                <img className="card-img-top" src={image.original} alt=""></img>
                 <button
                   href="#"
                   className="btn btn-primary mt-2"
@@ -54,7 +57,12 @@ export default function ShowDetails() {
                 >
                   Watch Trailer
                 </button>
-                {open ? showTrailer(setOpen, videoId) : ""}
+                <YoutubePortal
+                  isOpen={isOpen}
+                  setOpen={setOpen}
+                  videoId={videoId}
+                ></YoutubePortal>
+                {/* {open ? showTrailer(setOpen, videoId) : ""} */}
               </div>
             </div>
           </div>
@@ -180,32 +188,48 @@ export default function ShowDetails() {
   return <Home></Home>;
 }
 
-function showTrailer(setOpen, videoId) {
-  const Style = {
-    position: "fixed",
-    left: "50%",
-    top: "50%",
-    transform: "translate(-50%, -50%)",
-    zIndex: "2",
-  };
-  return (
-    <div style={Style}>
-      <iframe
-        title="trailer"
-        type="text/html"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/${videoId}`}
-      ></iframe>
+// function showTrailer(setOpen, videoId) {
+//   const Style = {
+//     position: "fixed",
+//     left: "50%",
+//     top: "50%",
+//     transform: "translate(-50%, -50%)",
+//     zIndex: "2",
+//   };
+//   return (
+//     <div class="embed-responsive embed-responsive-16by9">
+//       <iframe
+//         title="trailer"
+//         class="embed-responsive-item"
+//         src={`https://www.youtube.com/embed/${videoId}`}
+//         allowfullscreen
+//       ></iframe>
+//       <button
+//         className="btn btn-primary mt-2"
+//         onClick={() => {
+//           setOpen(false);
+//         }}
+//       >
+//         Close
+//       </button>
+//     </div>
+//     // <div style={Style}>
+//     //   <iframe
+//     //     title="trailer"
+//     //     type="text/html"
+//     //     width="640"
+//     //     height="360"
+//     //     src={`https://www.youtube.com/embed/${videoId}`}
+//     //   ></iframe>
 
-      <button
-        className="btn btn-primary mt-2"
-        onClick={() => {
-          setOpen(false);
-        }}
-      >
-        Close
-      </button>
-    </div>
-  );
-}
+//     //   <button
+//     //     className="btn btn-primary mt-2"
+//     //     onClick={() => {
+//     //       setOpen(false);
+//     //     }}
+//     //   >
+//     //     Close
+//     //   </button>
+//     // </div>
+//   );
+// }

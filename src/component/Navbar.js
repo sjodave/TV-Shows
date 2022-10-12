@@ -19,9 +19,14 @@ export default function NavigationBar() {
   return (
     <Navbar bg="primary" variant="dark" fixed="top">
       <Container>
-        <Navbar.Brand href="/">Home</Navbar.Brand>
+        {/* <Navbar.Brand href="/">Home</Navbar.Brand> */}
+        <Navbar.Brand href="/" style={{ marginLeft: "0px" }}>
+          📺 Tv Shows 🎥
+        </Navbar.Brand>
+
         <Nav className="me-auto">
           <NavDropdown title="Category" id="basic-nav-dropdown">
+            <NavDropdown.Item href="/">Home</NavDropdown.Item>
             <NavDropdown.Item href="/Action">Action</NavDropdown.Item>
             <NavDropdown.Item href="/Crime">Crime</NavDropdown.Item>
             <NavDropdown.Item href="/Fantasy">Fantasy</NavDropdown.Item>
@@ -40,7 +45,8 @@ export default function NavigationBar() {
           />
           <Button
             variant="outline-warning"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               if (input.current.value.length > 2) {
                 fetch(
                   `https://api.tvmaze.com/search/shows?q=${input.current.value}`
