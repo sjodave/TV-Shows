@@ -1,6 +1,11 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setPage } from "../redux/reducer";
 
-export default function Pages({ page, setPage }) {
+export default function Pages() {
+  const { page } = useSelector((state) => state.show);
+  const dispatch = useDispatch();
+
   return (
     <div
       id="pages"
@@ -13,7 +18,7 @@ export default function Pages({ page, setPage }) {
       <button
         className="btn btn-primary"
         onClick={() => {
-          if (page > 1) setPage(page - 1);
+          if (page > 0) dispatch(setPage(page - 1));
         }}
       >
         {"<<"}
@@ -22,7 +27,7 @@ export default function Pages({ page, setPage }) {
       <button
         className="btn btn-primary"
         onClick={() => {
-          setPage(page + 1);
+          dispatch(setPage(page + 1));
         }}
       >
         {">>"}

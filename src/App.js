@@ -1,17 +1,27 @@
 import React from "react";
 import "./App.css";
-import Home from "./Home";
+import Home from "./component/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ShowDetails from "./component/ShowDetails";
 import NavigationBar from "./component/Navbar";
 import ShowList from "./component/showList";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { setLoading, setSortList } from "./redux/reducer";
 
 function App() {
-  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
+  const {
+    Action,
+    Crime,
+    Drama,
+    Thriller,
+    Fantasy,
+    SciFi,
+    searchedShow,
+    showList,
+    page,
+  } = useSelector((state) => state.show);
   useEffect(() => {
     dispatch(setLoading(true));
     fetch(`https://api.tvmaze.com/shows?page=${page}`)
@@ -25,22 +35,12 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  const {
-    Action,
-    Crime,
-    Drama,
-    Thriller,
-    Fantasy,
-    SciFi,
-    searchedShow,
-    showList,
-  } = useSelector((state) => state.show);
   return (
     <>
       <BrowserRouter>
         <NavigationBar></NavigationBar>
         <Routes>
-          <Route path="/" element={<Home page={page} setPage={setPage} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/showDetails" element={<ShowDetails />} />
           <Route
             path="/All_Shows"

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Pages from "./Pages";
 import Show from "./show";
 
 function ShowList({ showList, title, display }) {
@@ -10,7 +11,7 @@ function ShowList({ showList, title, display }) {
     <div className="showListName">
       <div style={title_Name_Style}>
         <h6 className="category-title">{title}</h6>
-        <Link to={title}>Expand</Link>
+        {!display ? <Link to={title}>Expand</Link> : <Link to={"/"}>Home</Link>}
       </div>
       <div className={className}>
         {showList.map((show, index) => {
@@ -21,6 +22,7 @@ function ShowList({ showList, title, display }) {
           );
         })}
       </div>
+      {display ? <Pages></Pages> : ""}
     </div>
   );
 }

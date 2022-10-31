@@ -14,6 +14,7 @@ const initialState = {
   category: "",
   crewData: [],
   searchedShow: [],
+  page: 0,
 };
 export const reducerSlice = createSlice({
   name: "reducer",
@@ -58,6 +59,9 @@ export const reducerSlice = createSlice({
     setSearchedShow: (state, action) => {
       state.searchedShow = action.payload;
     },
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
   },
 });
 
@@ -69,5 +73,6 @@ export const {
   setCurrentShow,
   setCrewData,
   setSearchedShow,
+  setPage,
 } = reducerSlice.actions;
 export default reducerSlice.reducer;

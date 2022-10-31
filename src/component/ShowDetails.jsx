@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Home from "../Home";
+import Home from "./Home";
 import YoutubePortal from "./YoutubePortal";
 
 export default function ShowDetails() {
@@ -31,7 +31,7 @@ export default function ShowDetails() {
   }, [api]);
   useEffect(() => {
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${currentShow.name}SeriesOfficialTrailer&key=AIzaSyDkMxIdZDIWOXW03zO94sy140P298BicKk`
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${currentShow.name}OfficialTrailer&key=AIzaSyDkMxIdZDIWOXW03zO94sy140P298BicKk`
     )
       .then((resp) => resp.json())
       .then((data) => {

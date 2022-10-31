@@ -1,19 +1,17 @@
 import React from "react";
-import "./App.css";
-import ShowList from "./component/showList";
+import ShowList from "./showList";
 import { useSelector } from "react-redux";
 import Loading from "./Loading";
-import FeaturedShows from "./component/featuredShows";
-import Pages from "./component/Pages";
+import FeaturedShows from "./featuredShows";
+import Pages from "./Pages";
 
-function Home({ page, setPage }) {
+function Home() {
   const { loading, showList, Action, Crime, Fantasy, SciFi, Thriller } =
     useSelector((state) => state.show);
   if (loading) return;
   return (
     <>
       <Loading loading={loading}></Loading>
-      <Pages page={page} setPage={setPage}></Pages>
       <FeaturedShows></FeaturedShows>
       <ShowList
         className="allShows"
@@ -25,6 +23,7 @@ function Home({ page, setPage }) {
       <ShowList title="Thriller" showList={Thriller}></ShowList>
       <ShowList title="SciFi" showList={SciFi}></ShowList>
       <ShowList title="Fantasy" showList={Fantasy}></ShowList>
+      <Pages></Pages>
     </>
   );
 }
