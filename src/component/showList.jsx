@@ -1,4 +1,5 @@
 import React from "react";
+import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Pages from "./Pages";
 import Show from "./show";
@@ -16,7 +17,7 @@ function ShowList({ showList, title, display }) {
       <div className={className}>
         {showList.map((show, index) => {
           return (
-            <div className="col-sm-2 col-4" key={index}>
+            <div className="col-4 col-md-3 col-lg-2" key={index}>
               <Show shows={show}></Show>
             </div>
           );

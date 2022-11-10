@@ -30,8 +30,8 @@ export default function FeaturedShows() {
                 <div>
                   <img
                     style={{
-                      width: "30vw",
-                      height: "30vw",
+                      width: "32vw",
+                      height: "32vw",
                       objectFit: "fill ",
                     }}
                     alt="img"

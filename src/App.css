@@ -65,7 +65,7 @@ img {
   /* font-size: 3vw; */
 }
 .zoom {
-  transition: transform 0.3s; /* Animation */
+  transition: transform 0.3s;
 }
 
 .zoom:hover {

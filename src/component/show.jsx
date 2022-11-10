@@ -29,11 +29,6 @@ function Show(props) {
           className="w-100 zoom"
           src={props.shows.image ? props.shows.image.medium : "notfound.png"}
           alt=""
-          style={{
-            height: "32vh",
-            cursor: "pointer",
-            margin: "5px",
-          }}
         />
       </div>
     </>
