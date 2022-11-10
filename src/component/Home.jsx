@@ -8,7 +8,7 @@ import Pages from "./Pages";
 function Home() {
   const { loading, showList, Action, Crime, Fantasy, SciFi, Thriller } =
     useSelector((state) => state.show);
-  if (loading) return;
+  if (loading) return <Loading loading={loading}></Loading>;
   return (
     <>
       <Loading loading={loading}></Loading>
