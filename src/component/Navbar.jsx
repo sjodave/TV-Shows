@@ -1,14 +1,7 @@
 import React, { useRef } from "react";
 import { setSearchedShow } from "../redux/reducer";
 import { useDispatch } from "react-redux";
-import {
-  Navbar,
-  Container,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-} from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Form, FormControl } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function NavigationBar() {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import Home from "./Home";
 import YoutubePortal from "./YoutubePortal";
@@ -28,7 +29,8 @@ export default function ShowDetails() {
         .then((resp) => resp.json())
         .then((data) => setShowData(data));
     }
-  }, [api]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     fetch(
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${currentShow.name}OfficialTrailer&key=AIzaSyDkMxIdZDIWOXW03zO94sy140P298BicKk`
@@ -37,10 +39,11 @@ export default function ShowDetails() {
       .then((data) => {
         setVideoId(data?.items[0]?.id?.videoId);
       });
-  }, [currentShow.name]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   if (currentShow) {
     return (
-      <>
+      <Container>
         <div className="row">
           <h2 className="text-primary">{name}</h2>
 
@@ -182,54 +185,8 @@ export default function ShowDetails() {
             );
           })}
         </div>
-      </>
+      </Container>
     );
   }
   return <Home></Home>;
 }
-
-// function showTrailer(setOpen, videoId) {
-//   const Style = {
-//     position: "fixed",
-//     left: "50%",
-//     top: "50%",
-//     transform: "translate(-50%, -50%)",
-//     zIndex: "2",
-//   };
-//   return (
-//     <div class="embed-responsive embed-responsive-16by9">
-//       <iframe
-//         title="trailer"
-//         class="embed-responsive-item"
-//         src={`https://www.youtube.com/embed/${videoId}`}
-//         allowfullscreen
-//       ></iframe>
-//       <button
-//         className="btn btn-primary mt-2"
-//         onClick={() => {
-//           setOpen(false);
-//         }}
-//       >
-//         Close
-//       </button>
-//     </div>
-//     // <div style={Style}>
-//     //   <iframe
-//     //     title="trailer"
-//     //     type="text/html"
-//     //     width="640"
-//     //     height="360"
-//     //     src={`https://www.youtube.com/embed/${videoId}`}
-//     //   ></iframe>
-
-//     //   <button
-//     //     className="btn btn-primary mt-2"
-//     //     onClick={() => {
-//     //       setOpen(false);
-//     //     }}
-//     //   >
-//     //     Close
-//     //   </button>
-//     // </div>
-//   );
-// }
