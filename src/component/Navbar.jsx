@@ -1,29 +1,30 @@
 import React, { useRef } from "react";
 import { setSearchedShow } from "../redux/reducer";
 import { useDispatch } from "react-redux";
-import { Navbar, Nav, NavDropdown, Form, FormControl } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function NavigationBar() {
   const dispatch = useDispatch();
   const input = useRef();
   const navigate = useNavigate();
-  const search = () => {
-    if (input.current.value.length > 2) {
+  const search = (e) => {
+    e.preventDefault();
+    if (input.current.value.length > 1) {
       fetch(`https://api.tvmaze.com/search/shows?q=${input.current.value}`)
         .then((resp) => resp.json())
         .then((data) =>
           dispatch(
             setSearchedShow(
               data.map((item) => {
-                // obtain same array of object as in app.js component
                 return item.show;
               })
             )
           )
         );
       navigate("/Search");
-    }
+      input.current.value = "";
+    } else alert("Type minimum 2 letters to search");
   };
   return (
     <Navbar bg="primary" variant="dark" fixed="top" className="p-2">
@@ -39,15 +40,17 @@ export default function NavigationBar() {
           <NavDropdown.Item href="/SciFi">SciFi</NavDropdown.Item>
         </NavDropdown>
       </Nav>
-      <Form>
-        <FormControl
+      <Form className="d-flex" onSubmit={search}>
+        <Form.Control
           ref={input}
-          type="input"
-          placeholder="search"
+          type="search"
+          placeholder="Search"
           className="me-2"
-          aria-label="search"
-          onChange={() => search()}
+          aria-label="Search"
         />
+        <Button variant="light" type="submit">
+          Search
+        </Button>
       </Form>
     </Navbar>
   );
